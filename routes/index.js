@@ -2,16 +2,18 @@ var express = require('express');
 var router = express.Router();
 var mysql = require('mysql2');
 
+require('dotenv').config();
 
 var con = mysql.createConnection({
-  host: 'bazepodataka.ba',
-  port: 7306,
-  user: 'student2363',
-  password: '13412',
-  connectTimeout: 20000,
-  authPlugin: 'mysql_native_password',
-  database: "student2363"
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  connectTimeout: process.env.DB_TIMEOUT,
+  authPlugin: process.env.DB_AUTH_PLUGIN,
+  database: process.env.DB_DATABASE
 });
+
 
 con.connect(function(err) {
   if (err) throw err;
