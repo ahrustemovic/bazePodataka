@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Cjenovnik</title>
+
+</head>
+<body>
+<h1>Cjenovnik</h1>
+
+<% cjenovnikData.forEach(cjenovnik => { %>
+    <div>
+        <h2>Datum važenja: <%= cjenovnik.datum_vazenja.toLocaleDateString() %></h2>
+        <p>Naziv: <%= cjenovnik.naziv %></p>
+        <p>Napomena: <%= cjenovnik.napomena %></p>
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>Redni broj</th>
+                <th>Šifra proizvoda</th>
+                <th>Naziv proizvoda</th>
+                <th>Cijena</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% cjenovnik.stavke.forEach(stavka => { %>
+                <tr>
+                    <td><%= stavka.redni_broj %></td>
+                    <td><%= stavka.sifra_proizvoda %></td>
+                    <td><%= stavka.proizvod_naziv %></td>
+                    <td><%= stavka.cijena %></td>
+                </tr>
+            <% }) %>
+            </tbody>
+        </table>
+        </div>
+    </div>
+<% }) %>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Proizvodi</title>
+
+    <style>
+        .product-image {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+<h1>Proizvodi</h1>
+
+<% Object.keys(kategorije).forEach(kategorija => { %>
+    <h2><%= kategorija %></h2>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>Naziv</th>
+            <th>Opis</th>
+            <th>Cijena</th>
+            <th>Slika</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <% kategorije[kategorija].forEach(proizvod => { %>
+            <tr>
+                <td><%= proizvod.naziv %></td>
+                <td><%= proizvod.opis %></td>
+                <td><%= proizvod.cijena %></td>
+                <td><img class="product-image" src="data:image/jpeg;base64,<%= proizvod.slika.toString('base64') %>" alt="<%= proizvod.naziv %>"></td>
+            </tr>
+        <% }) %>
+        </tbody>
+    </table>
+    </div>
+<% }) %>
+
+</body>
+</html>
+
+
+

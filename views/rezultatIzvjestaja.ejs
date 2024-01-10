@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+<div class="b ">
+    <h1><%= title %></h1>
+    <br>
+    <br>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <th> Naziv klijenta </th>
+                <th> Ukupan broj narudžbi </th>
+                <th> Ukupna vrijednost narudžbi </th>
+            </tr>
+            </thead>
+            <% if (izvjestaj && izvjestaj.length) { %>
+            <tbody>
+
+            <% izvjestaj.forEach(i => { %>
+                <tr>
+                    <td><%= i['Naziv klijenta'] %></td>
+                    <td><%= i['Ukupan broj narudžbi'] %></td>
+                    <td><%= i['Ukupna vrijednost narudžbi'].toFixed(2) %></td>
+                </tr>
+            <%})%>
+            </tbody>
+            <% } else { %>
+                <p>No data available.</p>
+            <% } %>
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>
